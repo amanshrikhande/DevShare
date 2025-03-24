@@ -1,12 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    include: ['@monaco-editor/react'], // Ensure it's bundled
+  },
   build: {
     rollupOptions: {
-      external: ['@monaco-editor/react'], // Exclude Monaco from bundling
+      external: ['@monaco-editor/react'], // Try excluding it
     },
   },
 });
